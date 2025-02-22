@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>JokeAPI</title>
+</head>
+
+<body>
+
+  <% if (locals.data) { %>
+
+    <p>
+      <%- data.joke %>
+    </p>
+
+    <% } %>
+
+      <br><br><br>
+
+      <form action="/" method="post">
+        <label for="category">Category:</label> <br><br>
+        <select name="category" id="category">
+          <option value="Dark">dark</option>
+          <option value="Programming">programming</option>
+          <option value="Pun">pun</option>
+          <option value="Miscellaneous">misc</option>
+        </select> <br><br>
+        <input type="submit">
+      </form>
+
+
+</body>
+
+</html>

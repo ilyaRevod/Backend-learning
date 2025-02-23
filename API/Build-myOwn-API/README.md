@@ -3,7 +3,7 @@
 This is a basic API project using `Express` and `body-parser`.
 in this version(v1) the API will only handle the GET req.
 
-## Features
+## Future Plans
 
 - Adding more jokes
 - Displays data using EJS templates

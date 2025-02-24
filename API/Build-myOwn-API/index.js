@@ -32,18 +32,80 @@ app.get('/filter', (req, res) => {
 
 
 //4. POST a new joke
+app.post('/jokes', (req, res) => {
+  const { text, type } = req.body;
+  const newJoke = {
+    id: jokes.length + 1,
+    jokeText: text,
+    jokeType: type,
+  };
+  jokes.push(newJoke);
+  res.json(jokes);
+});
+
 
 //5. PUT a joke
+app.put('/jokes/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const { text, type } = req.body;
+  const jokeIndex = jokes.findIndex(joke => joke.id === id);
+  if (jokeIndex !== -1) {
+    jokes[jokeIndex] = {
+      id: id,
+      jokeText: text,
+      jokeType: type,
+    };
+    res.json(jokes);
+  } else {
+    res.send("Unsuccessful !");
+  };
+});
+
 
 //6. PATCH a joke
+app.patch('/jokes/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const { text, type } = req.body;
+  const jokeIndex = jokes.findIndex(joke => joke.id === id);
+  if (jokeIndex !== -1) {
+    jokes[jokeIndex] = {
+      ...jokes[jokeIndex],
+      jokeText: text !== undefined ? text : jokes[jokeIndex].jokeText,
+      jokeType: type !== undefined ? type : jokes[jokeIndex].jokeType,
+    };
+    res.json(jokes);
+  } else {
+    res.send("Unsuccessful !");
+  };
+});
+
 
 //7. DELETE Specific joke
+app.delete('/jokes/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const jokeIndex = jokes.findIndex(joke => joke.id === id);
+  if (jokeIndex !== -1) {
+    jokes.splice(jokeIndex, 1);
+    res.json(jokes);
+  } else {
+    res.send("Unsuccessful !");
+  };
+});
+
 
 //8. DELETE All jokes
+app.delete('/all', (req, res) => {
+  const userAuth = req.query.key;
+  if (userAuth === masterKey) {
+    jokes.splice(0, arr.length);
+  } else {
+    res.send("Unsuccessful !");
+  };
+});
 
 
 app.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}.`);
+  console.log(`http://localhost:${PORT}`);
 });
 
 

@@ -62,12 +62,6 @@ Visit `http://localhost:3000` to view the blog.
 | PATCH  | `/posts/:id` | Update a post (partial)   |
 | DELETE | `/posts/:id` | Delete a post             |
 
-## Screenshots
-
-![Homepage](./screenshots/homePage.png)
-![Create Post](./screenshots/newPost.png)
-![responsive](./screenshots/responsive.jpg)
-
 ## Future Improvements
 
 - Add **MongoDB** or **PostgreSQL** for persistent storage instead of an in-memory array.

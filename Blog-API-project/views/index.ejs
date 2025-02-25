@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+  <title>Blog</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1><img src="/assets/REVOD-final.svg" alt="logo"> Ilya Revod</h1>
+    <p>"My First Blog Web application"</p>
+    <a id="newPostBtn" href="/new">New Post</a>
+    <ul id="postsList">
+      <% posts.forEach(post=> { %>
+        <li>
+          <h2>
+            <%= post.title %>
+          </h2>
+          <small>
+            <%= post.date %>
+          </small>
+          <p>
+            <%= post.content %>
+          </p>
+          <small>By: <%= post.author %> </small>
+          <a class="edit" href="/edit/<%= post.id %>">Edit
+            <i class="ri-edit-box-line"></i>
+          </a>
+          <a class="delete" href="/api/posts/delete/<%= post.id %>">Delete
+            <i class="ri-delete-bin-line"></i>
+          </a>
+        </li>
+        <% }); %>
+    </ul>
+  </div>
+</body>
+
+</html>
